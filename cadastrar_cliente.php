@@ -82,7 +82,7 @@ if(count($_POST)>0){
         <br>
         </p>
         <p>
-            <button type="submit">Salvar </button>
+            <button type="submit">Salvar Cliente</button>
         </p>
     </form>
 </body>
