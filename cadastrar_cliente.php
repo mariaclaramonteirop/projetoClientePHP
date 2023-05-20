@@ -7,14 +7,14 @@ if(count($_POST)>0){
     $telefone = $_POST['telefone'];
     $nascimento = $_POST['nascimento'];
     $erro = false;
-    if(empty($nome)){
-        $erro = "Preencha o nome.";
-    }
-    else if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $erro = "Preencha o email.";
-    } 
-  
 
+        if(empty($nome)){
+            $erro = "Preencha o nome.";
+        }
+        else if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $erro = "Preencha o email.";
+        } 
+    
         if(!empty($nascimento)){
             $pedacos = explode('/', $nascimento);
                 if(count($pedacos) == 3){  
@@ -23,6 +23,7 @@ if(count($_POST)>0){
                     $erro = "A Data de Nascimento deve ter o padrão dia/mes/ano.";
                 }
         }
+
         if(!empty($telefone)){
             function limparTexto($str){
                 return preg_replace("/[^0-9]/", "", $str);
@@ -34,18 +35,19 @@ if(count($_POST)>0){
             }
         }
 
+        if($erro){
+            echo "<b><p>ERRO: $erro</p></b>";
+        } else{
+            $sql_code = "INSERT INTO clientes(nome, email, telefone,nascimento, data) 
+            VALUES ('$nome', '$email', '$telefone', '$nascimento', NOW())";
 
-    if($erro){
-        echo "<b><p>ERRO: $erro</p></b>";
-    } else{
-        $sql_code = "INSERT INTO clientes(nome, email, telefone,nascimento, data) 
-        VALUES ('$nome', '$email', '$telefone', '$nascimento', NOW())";
-       $deucerto =  $mysqli -> query($sql_code) or die($mysqli -> error);
-        if($deucerto){
-            echo "<b><p>Cliente criado com sucesso.</p></b>";
-            unset($_POST);
-        } 
-    }
+            $deucerto =  $mysqli -> query($sql_code) or die($mysqli -> error);
+
+                if($deucerto){
+                    echo "<b><p>Cliente criado com sucesso.</p></b>";
+                    unset($_POST);
+                } 
+        }
 
 }
 
@@ -82,7 +84,7 @@ if(count($_POST)>0){
         <br>
         </p>
         <p>
-            <button type="submit">Salvar Cliente</button>
+            <button type="submit">Salvar Cliente</button> 
         </p>
     </form>
 </body>
