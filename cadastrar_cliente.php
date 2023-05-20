@@ -40,7 +40,7 @@ if(count($_POST)>0){
     } else{
         $sql_code = "INSERT INTO clientes(nome, email, telefone,nascimento, data) 
         VALUES ('$nome', '$email', '$telefone', '$nascimento', NOW())";
-       $deucerto =  $mysqli -> query($sql_code) or die(mysqli_error($mysqli->error));
+       $deucerto =  $mysqli -> query($sql_code) or die($mysqli -> error);
         if($deucerto){
             echo "<b><p>Cliente criado com sucesso.</p></b>";
             unset($_POST);
