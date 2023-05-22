@@ -27,7 +27,7 @@ $num_clientes = $query_clientes->num_rows;
                 <th>Telefone</th>
                 <th>Nascimento</th>
                 <th>Data de Cadastro</th>
-                <th></th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -39,15 +39,33 @@ $num_clientes = $query_clientes->num_rows;
                 </tr>
             <?php } else{
                     while($cliente = $query_clientes->fetch_assoc()){
+                        $telefone ="Não informado";
+                        
+                        if(!empty($cliente['telefone'])){
+                            $ddd = substr($cliente['telefone'],0, 2);
+                            $parte1 =substr($cliente['telefone'],2, 5);
+                            $parte2 = substr($cliente['telefone'],7);
+                            $telefone ="($ddd) $parte1 - $parte2";
+                        }
+                        $nascimento = "Não informada.";
+                        if(!empty($cliente['nascimento'])){
+                            $nascimento = implode('/',array_reverse(explode('-', $cliente['nascimento'])));
+
+
+                        }
+                        $dataCadastro = date("d/m/Y H:i",strtotime($cliente['data']));
                 ?>
                     <tr>
                         <td><?php echo $cliente['id'];?></td>
                         <td><?php echo $cliente['nome'];?></td>
                         <td><?php echo $cliente['email'];?></td>
-                        <td><?php echo $cliente['telefone'];?></td>
-                        <td><?php echo $cliente['nascimento'];?></td>
-                        <td><?php echo $cliente['data'];?></td>
-                        <td></td>
+                        <td><?php echo $telefone;?></td>
+                        <td><?php echo $nascimento;?></td>
+                        <td><?php echo $dataCadastro;?></td>
+                        <td>
+                            <a href="editar_cliente.php?id=<?php echo $cliente['id'];?>">Editar</a>
+                            <a href="deletar_cliente.php?id=<?php echo $cliente['id'];?>">Deletar</a>
+                        </td>
                     </tr>
 
             <?php } 
