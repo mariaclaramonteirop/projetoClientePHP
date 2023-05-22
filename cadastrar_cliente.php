@@ -61,7 +61,7 @@ if(count($_POST)>0){
     <title>Cadastrar Cliente</title>
 </head>
 <body>
-    <a href="/clientes.php">Voltar para a lista</a>
+    <a href="./clientes.php">Voltar para a lista</a>
     <form method="POST" action="">
         <p>
             <label>Nome </label>
