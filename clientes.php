@@ -63,8 +63,8 @@ $num_clientes = $query_clientes->num_rows;
                         <td><?php echo $nascimento;?></td>
                         <td><?php echo $dataCadastro;?></td>
                         <td>
-                            <a href="editar_cliente.php?id=<?php echo $cliente['id'];?>">Editar</a>
-                            <a href="deletar_cliente.php?id=<?php echo $cliente['id'];?>">Deletar</a>
+                            <a href="editar_cliente.php?id=<?php echo $cliente['id'];?>"> <img src="editar.png" alt="" style="width:40px;"></a>
+                            <a href="deletar_cliente.php?id=<?php echo $cliente['id'];?>"> <img src="excluir.png" alt="" style="width:42px;"></a>
                         </td>
                     </tr>
 
