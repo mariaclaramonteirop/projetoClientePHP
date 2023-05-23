@@ -1,4 +1,4 @@
-# Projeto Cliente PHP
+# Projeto Cliente PHP - Um CRUD Básico
 
 Este repositório contém um projeto de exemplo para um sistema de gerenciamento de clientes em PHP. O projeto foi desenvolvido pela autora Maria Clara Monteiro.
 
