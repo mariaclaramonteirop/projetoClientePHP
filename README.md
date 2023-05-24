@@ -9,7 +9,7 @@ O objetivo deste projeto é fornecer um exemplo básico de um sistema de cadastr
 O sistema permite realizar as seguintes operações:
 
 - Cadastrar um novo cliente, fornecendo informações como nome, endereço, telefone, e-mail, etc.
-- Visualizar os detalhes de um cliente específico.
+- Visualizar os detalhes de um cliente.
 - Editar as informações de um cliente existente.
 - Excluir um cliente do sistema.
 
